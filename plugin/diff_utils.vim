@@ -16,24 +16,34 @@ endif
 
 " GLOBALS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:diff_utils_load_default_maps = get(g:, 'diff_utils_load_default_maps', 1)
+let g:diff_utils_default_mapping = get(g:, 'diff_utils_default_mapping', 1)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 " MAPPINGS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:diff_utils_load_default_maps
-    nnoremap <silent> <Plug>(diff-utils-get)
-                \ :<C-U>call diff_utils#do(v:count, 'diffget')<CR>
-    if !hasmapto('<Plug>(diff-utils-get)')
-        nmap <unique> do <Plug>(diff-utils-get)
+function! s:do_map(name, lhs, rhs, mode, default_option) abort "{{{2
+    let plug = '<Plug>('.a:name.')'
+    execute a:mode.'noremap <silent> '.plug.' '.a:rhs
+    if a:default_option
+        execute a:mode.'map <unique> '.a:lhs.' '.plug
     endif
+endfunction "}}}2
 
-    nnoremap <silent> <Plug>(diff-utils-put)
-                \ :<C-U>call diff_utils#do(v:count, 'diffput')<CR>
-    if !hasmapto('<Plug>(diff-utils-put)')
-        nmap <unique> dp <Plug>(diff-utils-put)
-    endif
-endif
+call s:do_map(
+            \ "diff-utils-obtain",
+            \ "do",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffget')\<CR>",
+            \ "n",
+            \ g:diff_utils_default_mapping,
+            \ )
+
+call s:do_map(
+            \ "diff-utils-put",
+            \ "dp",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffput')\<CR>",
+            \ "n",
+            \ g:diff_utils_default_mapping,
+            \ )
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""{{{
