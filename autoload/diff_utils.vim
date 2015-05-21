@@ -23,7 +23,7 @@ function! diff_utils#do(count, diffcmd)
     if a:diffcmd == 'diffput'
         call repeat#set("\<Plug>(diff-utils-put)", a:count)
     else
-        call repeat#set("\<Plug>(diff-utils-get)", a:count)
+        call repeat#set("\<Plug>(diff-utils-obtain)", a:count)
     endif
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
