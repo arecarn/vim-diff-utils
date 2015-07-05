@@ -19,6 +19,7 @@ function! diff_utils#do(count, diffcmd)
     endif
 
     execute a:diffcmd . ' ' . buffer
+    diffupdate
 
     if a:diffcmd == 'diffput'
         call repeat#set("\<Plug>(diff-utils-put)", a:count)
