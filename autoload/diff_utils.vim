@@ -10,7 +10,7 @@ set cpo&vim
 
 " PUBLIC FUNCTIONS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! diff_utils#do(count, diffcmd)
+function! diff_utils#do(count, diffcmd, range)
 
     let buffer = a:count
 
@@ -18,13 +18,21 @@ function! diff_utils#do(count, diffcmd)
         let buffer = ''
     endif
 
-    execute a:diffcmd . ' ' . buffer
+    execute a:range . a:diffcmd . ' ' . buffer
     diffupdate
 
-    if a:diffcmd == 'diffput'
-        call repeat#set("\<Plug>(diff-utils-put)", a:count)
+    if a:range == '.'
+        if a:diffcmd == 'diffput'
+            call repeat#set("\<Plug>(diff-utils-put-line)", a:count)
+        else
+            call repeat#set("\<Plug>(diff-utils-obtain-line)", a:count)
+        endif
     else
-        call repeat#set("\<Plug>(diff-utils-obtain)", a:count)
+        if a:diffcmd == 'diffput'
+            call repeat#set("\<Plug>(diff-utils-put)", a:count)
+        else
+            call repeat#set("\<Plug>(diff-utils-obtain)", a:count)
+        endif
     endif
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
