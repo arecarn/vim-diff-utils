@@ -27,10 +27,26 @@ do                      An enhanced |do| that can be repeated with '.'
                         including the [count] that is used as the [bufspec]
                         Plug mapping: `<Plug>(diff-utils-obtain)`
 
+                                                *]do*
+]do                     Like the enhanced `do` followed by ]c
+                        Plug mapping: `<Plug>(diff-utils-obtain-forward)`
+
+                                                *[do*
+[do                     Like the enhanced `do` followed by [c
+                        Plug mapping: `<Plug>(diff-utils-obtain-backward)`
+
                                                 *dp*
 dp                      An enhanced |dp| that can be repeated with '.'
                         including the [count] that is used as the [bufspec]
                         Plug mapping: `<Plug>(diff-utils-put)`
+
+                                                *]dp*
+]dp                     Like the enhanced `dp` followed by ]c
+                        Plug mapping: `<Plug>(diff-utils-put-forward)`
+
+                                                *[dp*
+[dp                     Like the enhanced `dp` followed by [c
+                        Plug mapping: `<Plug>(diff-utils-put-backward)`
 
                                                 *dO*
 dO                      Like the enhanced |do| command but gets/obtains a
@@ -50,10 +66,15 @@ Example of an alternate configuration:~
                        " disable default mappings first
                        let g:diff_utils_default_mapping = 0
 
-                       nmap <leader>do <Plug>(diff-utils-obtain)
-                       nmap <leader>dp <Plug>(diff-utils-put)
-                       nmap <leader>dO <Plug>(diff-utils-obtain-line)
-                       nmap <leader>dP <Plug>(diff-utils-put-line)
+                       nmap <leader>dp  <Plug>(diff-utils-put)
+                       nmap <leader>]dp <Plug>(diff-utils-put-forward)
+                       nmap <leader>[dp <Plug>(diff-utils-put-backward)
+                       nmap <leader>dP  <Plug>(diff-utils-put-line)
+
+                       nmap <leader>do  <Plug>(diff-utils-obtain)
+                       nmap <leader>]do <Plug>(diff-utils-obtain-forward)
+                       nmap <leader>[do <Plug>(diff-utils-obtain-backward)
+                       nmap <leader>dO  <Plug>(diff-utils-obtain-line)
 <
 
 ------------------------------------------------------------------------------
