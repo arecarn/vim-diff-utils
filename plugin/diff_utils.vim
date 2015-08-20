@@ -32,7 +32,23 @@ endfunction "}}}2
 call s:do_map(
             \ "diff-utils-obtain",
             \ "do",
-            \ ":\<C-U>call diff_utils#do(v:count, 'diffget', '')\<CR>",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffget', '', '')\<CR>",
+            \ "n",
+            \ g:diff_utils_default_mapping,
+            \ )
+
+call s:do_map(
+            \ "diff-utils-obtain-forward",
+            \ "]do",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffget', '', 'forward')\<CR>",
+            \ "n",
+            \ g:diff_utils_default_mapping,
+            \ )
+
+call s:do_map(
+            \ "diff-utils-obtain-backward",
+            \ "[do",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffget', '', 'backward')\<CR>",
             \ "n",
             \ g:diff_utils_default_mapping,
             \ )
@@ -40,7 +56,7 @@ call s:do_map(
 call s:do_map(
             \ "diff-utils-obtain-line",
             \ "dO",
-            \ ":\<C-U>call diff_utils#do(v:count, 'diffget', '.')\<CR>",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffget', '.', '')\<CR>",
             \ "n",
             \ g:diff_utils_default_mapping,
             \ )
@@ -48,7 +64,23 @@ call s:do_map(
 call s:do_map(
             \ "diff-utils-put",
             \ "dp",
-            \ ":\<C-U>call diff_utils#do(v:count, 'diffput', '')\<CR>",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffput', '', '')\<CR>",
+            \ "n",
+            \ g:diff_utils_default_mapping,
+            \ )
+
+call s:do_map(
+            \ "diff-utils-put-forward",
+            \ "]dp",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffput', '', 'forward')\<CR>",
+            \ "n",
+            \ g:diff_utils_default_mapping,
+            \ )
+
+call s:do_map(
+            \ "diff-utils-put-backward",
+            \ "[dp",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffput', '', 'backward')\<CR>",
             \ "n",
             \ g:diff_utils_default_mapping,
             \ )
@@ -56,7 +88,7 @@ call s:do_map(
 call s:do_map(
             \ "diff-utils-put-line",
             \ "dP",
-            \ ":\<C-U>call diff_utils#do(v:count, 'diffput', '.')\<CR>",
+            \ ":\<C-U>call diff_utils#do(v:count, 'diffput', '.', '')\<CR>",
             \ "n",
             \ g:diff_utils_default_mapping,
             \ )

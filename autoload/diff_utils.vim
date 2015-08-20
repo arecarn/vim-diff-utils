@@ -10,7 +10,7 @@ set cpo&vim
 
 " PUBLIC FUNCTIONS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! diff_utils#do(count, diffcmd, range)
+function! diff_utils#do(count, diffcmd, range, direction)
 
     let buffer = a:count
 
@@ -19,21 +19,40 @@ function! diff_utils#do(count, diffcmd, range)
     endif
 
     execute a:range . a:diffcmd . ' ' . buffer
-    diffupdate
 
-    if a:range == '.'
-        if a:diffcmd == 'diffput'
-            call repeat#set("\<Plug>(diff-utils-put-line)", a:count)
+    if a:direction == ''
+        if a:range == '.'
+            if a:diffcmd == 'diffput'
+                call repeat#set("\<Plug>(diff-utils-put-line)", a:count)
+            else
+                call repeat#set("\<Plug>(diff-utils-obtain-line)", a:count)
+            endif
         else
-            call repeat#set("\<Plug>(diff-utils-obtain-line)", a:count)
+            if a:diffcmd == 'diffput'
+                call repeat#set("\<Plug>(diff-utils-put)", a:count)
+            else
+                call repeat#set("\<Plug>(diff-utils-obtain)", a:count)
+            endif
         endif
     else
-        if a:diffcmd == 'diffput'
-            call repeat#set("\<Plug>(diff-utils-put)", a:count)
-        else
-            call repeat#set("\<Plug>(diff-utils-obtain)", a:count)
+        if a:direction == 'forward'
+            normal! ]c
+            if a:diffcmd == 'diffput'
+                call repeat#set("\<Plug>(diff-utils-put-forward)", a:count)
+            else
+                call repeat#set("\<Plug>(diff-utils-obtain-forward)", a:count)
+            endif
+        elseif a:direction == 'backwards'
+            normal! [c
+            if a:diffcmd == 'diffput'
+                call repeat#set("\<Plug>(diff-utils-put-backward)", a:count)
+            else
+                call repeat#set("\<Plug>(diff-utils-obtain-backward)", a:count)
+            endif
         endif
     endif
+
+    diffupdate
 endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
