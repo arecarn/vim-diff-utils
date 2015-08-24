@@ -42,7 +42,7 @@ function! diff_utils#do(count, diffcmd, range, direction)
             else
                 call repeat#set("\<Plug>(diff-utils-obtain-forward)", a:count)
             endif
-        elseif a:direction == 'backwards'
+        elseif a:direction == 'backward'
             normal! [c
             if a:diffcmd == 'diffput'
                 call repeat#set("\<Plug>(diff-utils-put-backward)", a:count)
