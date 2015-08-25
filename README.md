@@ -1,6 +1,6 @@
 Description
 ===========
-Enhances the built in diff mode commands |do| and |dp| by making them
+Enhances the built in diff mode commands `do` and `dp` by making them
 repeatable with '.' via repeat.vim, and add some additonal helper commands for
 geting or putting a single line.
 
