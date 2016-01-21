@@ -57,6 +57,9 @@ dO                      Like the enhanced |do| command but gets/obtains a
 dP                      Like the enhanced |dp| command but puts single line
                         Plug mapping: `<Plug>(diff-utils-put-line)`
 
+                                                *du*
+du                      A mapping to |:diffupdate| command
+
 ==============================================================================
 CONFIGURATION                                      *diff-utils-configuration*
 
@@ -75,7 +78,8 @@ Example of an alternate configuration:~
                        nmap <leader>]do <Plug>(diff-utils-obtain-forward)
                        nmap <leader>[do <Plug>(diff-utils-obtain-backward)
                        nmap <leader>dO  <Plug>(diff-utils-obtain-line)
-<
+
+                       nmap <leader>du  <Plug>(diff-update)
 
 ------------------------------------------------------------------------------
 g:diff_utils_default_mapping~

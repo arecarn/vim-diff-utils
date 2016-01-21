@@ -20,3 +20,4 @@ Usage
 | normal | [dp         | `<Plug>(diff-utils-put-backward`     | Like the enhanced `dp` followed by [c                                                                  |
 | normal | dO          | `<Plug>(diff-utils-obtain-line)`     | Like the enhanced do command but gets/obtains a single line                                            |
 | normal | dP          | `<Plug>(diff-utils-put-line)`        | Like the enhanced dp command but puts single line                                                      |
+| normal | du          | `<Plug>(diff-update)`                | A mapping to `:diffupdate` command                                                                     |
