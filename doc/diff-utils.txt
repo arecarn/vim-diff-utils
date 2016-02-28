@@ -1,27 +1,33 @@
-*diff-utils*
-                           Repeatable Diff Commands
+*diff-utils* repeatable diff commands
 
-                        Diff Utils    By Ryan Carney~
+                                diff-utils~
 
-                                                             *diff-utils.txt*
+Description ......................................... |diff-utils-description|
+    Requirements .................................... |diff-utils-requirements|
+Usage ............................................... |diff-utils-usage|
+    Key Mappings .................................... |diff-utils-key-mappings|
+Configuration ....................................... |diff-utils-configuration|
+    Variables ....................................... |diff-utils-variables|
 
-Description ........................................ |diff-utils-description|
-Usage .............................................. |diff-utils-usage|
-Configuration ...................................... |diff-utils-configuration|
+                                                                *diff-utils.txt*
+==============================================================================
+DESCRIPTION                                             *diff-utils-description*
+
+Enhances the built in diff mode commands |do| and |dp| by making them
+repeatable with '.' via repeat.vim, and add some additional helper commands
+for getting or putting a single line.
+
+------------------------------------------------------------------------------
+REQUIREMENTS                                             *diff-utils-requirements*
+
+* vim-repeat https://github.com/tpope/vim-repeat
 
 ==============================================================================
-DESCRIPTION                                          *diff-utils-description*
+USAGE                                                         *diff-utils-usage*
 
-Enhances the built in diff mode commands |do| and |dp| by making them repeatable
-with '.' via repeat.vim, and add some additonal helper commands for geting or
-putting a single line.
-
-REQUIREMENTS~
-* |repeat.vim| https://github.com/tpope/vim-repeat
-
-==============================================================================
-USAGE                                                     *diff-utils-usage*
-
+------------------------------------------------------------------------------
+KEY MAPPINGS                                             *diff-utils-key-mappings*
+                                                *t*
                                                 *do*
 do                      An enhanced |do| that can be repeated with '.'
                         including the [count] that is used as the [bufspec]
@@ -59,33 +65,34 @@ dP                      Like the enhanced |dp| command but puts single line
 
                                                 *du*
 du                      A mapping to |:diffupdate| command
+                        Plug mapping: `<Plug>(diff-utils-diffupdate)`
 
 ==============================================================================
-CONFIGURATION                                      *diff-utils-configuration*
-
-Example of an alternate configuration:~
-
-                       >
-                       " disable default mappings first
-                       let g:diff_utils_default_mapping = 0
-
-                       nmap <leader>dp  <Plug>(diff-utils-put)
-                       nmap <leader>]dp <Plug>(diff-utils-put-forward)
-                       nmap <leader>[dp <Plug>(diff-utils-put-backward)
-                       nmap <leader>dP  <Plug>(diff-utils-put-line)
-
-                       nmap <leader>do  <Plug>(diff-utils-obtain)
-                       nmap <leader>]do <Plug>(diff-utils-obtain-forward)
-                       nmap <leader>[do <Plug>(diff-utils-obtain-backward)
-                       nmap <leader>dO  <Plug>(diff-utils-obtain-line)
-
-                       nmap <leader>du  <Plug>(diff-update)
+CONFIGURATION                                         *diff-utils-configuration*
 
 ------------------------------------------------------------------------------
-g:diff_utils_default_mapping~
+VARIABLES                                                   *diff-utils-variables*
 
-If set to 0 disables the default mappings.
+                                                *g:diff_utils_default_mapping*
+g:diff_utils_default_mapping
+                        If set to 0 disables the default mappings
+                        (default: 1)
 
-default value: 1
+                        Example of alternate mappings: >
 
+                        let g:diff_utils_default_mapping = 0
+
+                        nmap <leader>dp  <Plug>(diff-utils-put)
+                        nmap <leader>]dp <Plug>(diff-utils-put-forward)
+                        nmap <leader>[dp <Plug>(diff-utils-put-backward)
+                        nmap <leader>dP  <Plug>(diff-utils-put-line)
+
+                        nmap <leader>do  <Plug>(diff-utils-obtain)
+                        nmap <leader>]do <Plug>(diff-utils-obtain-forward)
+                        nmap <leader>[do <Plug>(diff-utils-obtain-backward)
+                        nmap <leader>dO  <Plug>(diff-utils-obtain-line)
+
+                        nmap <leader>du  <Plug>(diff-utils-diffupdate)
+
+==============================================================================
 vim:tw=78:ts=8:ft=help:norl:fdm=manual:
