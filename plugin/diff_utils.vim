@@ -94,7 +94,7 @@ call s:do_map(
             \ )
 
 call s:do_map(
-            \ "diff-update",
+            \ "diff-utils-diffupdate",
             \ "du",
             \ ":\<C-U>diffupdate\<CR>",
             \ "n",
